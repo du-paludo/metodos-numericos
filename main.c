@@ -31,10 +31,7 @@ int main() {
     gaussElimination(A, b, n);
     backSubstitution(A, b, x, n);
 
-    for (int i = 0; i < n-1; i++) {
-        printf("%lf ", x[i]);
-    }
-    printf("%lf\n", x[n-1]);
+    printSolution(x, n);
 
     // Libera a memória alocada
     for (int i = 0; i < n; i++) {
