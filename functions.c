@@ -1,12 +1,13 @@
-#include "functions.h";
+#include "functions.h"
 #include <stdio.h>
+#include <math.h>
 
 int findMax(double** A, int i, int n) {
     int pivotIndex = i;
     int pivotValue = A[pivotIndex][i];
 
     for (int k = i + 1; k < n; k++) {
-        if (abs(A[k][i]) > pivotValue) {
+        if (fabs(A[k][i]) > pivotValue) {
             pivotValue = A[k][i];
             pivotIndex = k;
         }
@@ -21,7 +22,7 @@ void swapRow(double** A, int i, int pivotIndex) {
     A[pivotIndex] = temp;
 }
 
-void eliminacaoGauss(double** A, double* b, int n) {
+void gaussElimination(double** A, double* b, int n) {
     for (int i = 0; i < n; i++) {
         int pivotIndex = findMax(A, i, n);
 

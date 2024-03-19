@@ -1,3 +1,4 @@
+#include "functions.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -25,12 +26,23 @@ int main() {
     //     printf("%lf\n", B[i]);
     // }
 
+    double* x = (double*) malloc(n * sizeof(double));
+
+    gaussElimination(A, b, n);
+    backSubstitution(A, b, x, n);
+
+    for (int i = 0; i < n-1; i++) {
+        printf("%lf ", x[i]);
+    }
+    printf("%lf\n", x[n-1]);
+
     // Libera a memória alocada
     for (int i = 0; i < n; i++) {
         free(A[i]);
     }
     free(A);
     free(b);
+    free(x);
 
     return 0;
 }
