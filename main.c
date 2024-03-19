@@ -7,14 +7,14 @@ int main() {
 
     // Aloca memória
     double** A = (double**) malloc(n * sizeof(double*));
-    double* B = (double*) malloc(n * sizeof(double));
+    double* b = (double*) malloc(n * sizeof(double));
 
     for (int i = 0; i < n; i++) {
         A[i] = (double*) malloc(n * sizeof(double));
         for (int j = 0; j < n; j++) {
             scanf("%lf", &A[i][j]);
         }
-        scanf("%lf", &B[i]);
+        scanf("%lf", &b[i]);
     }
 
     // Imprime o sistema
@@ -30,7 +30,7 @@ int main() {
         free(A[i]);
     }
     free(A);
-    free(B);
+    free(b);
 
     return 0;
 }
