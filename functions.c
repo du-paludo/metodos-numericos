@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <math.h>
 
+#define MAXIT 50
+#define MAXERROR 0.0001
+
 void printSystem(double** A, double* b, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -41,11 +44,11 @@ void swapRow(double** A, int i, int pivotIndex) {
 
 void gaussElimination(double** A, double* b, int n) {
     for (int i = 0; i < n; i++) {
-        // int pivotIndex = findMax(A, i, n);
+        int pivotIndex = findMax(A, i, n);
 
-        // if (pivotIndex != i) {
-        //     swapRow(A, i, pivotIndex);
-        // }
+        if (pivotIndex != i) {
+            swapRow(A, i, pivotIndex);
+        }
 
         for (int k = i+1; k < n; k++) {
             double m = A[k][i] / A[i][i];
@@ -65,5 +68,31 @@ void backSubstitution(double** A, double* b, double* x, int n) {
             x[i] -= A[i][j] * x[j];
         }
         x[i] /= A[i][i];
+    }
+}
+
+void gaussSeidel(double** A, double* b, double* x, int n) {
+    for (int i = 0; i < n; i++) {
+        x[i] = 0;
+    }
+    for (int k = 0; k < MAXIT; k++) {
+        double maxNorm = 0;
+        for (int i = 0; i < n; i++) {
+            double oldX = x[i];
+            x[i] = b[i];
+            for (int j = 0; j < n; j++) {
+                if (j == i) {
+                    continue;
+                }
+                x[i] -= A[i][j] * x[j];
+            }
+            x[i] /= A[i][i];
+            if ((x[i] - oldX) > maxNorm) {
+                maxNorm = x[i] - oldX;
+            }
+        }
+        if (maxNorm < MAXERROR) {
+            break;
+        }
     }
 }

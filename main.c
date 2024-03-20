@@ -18,18 +18,12 @@ int main() {
         scanf("%lf", &b[i]);
     }
 
-    // Imprime o sistema
-    // for (int i = 0; i < n; i++) {
-    //     for (int j = 0; j < n; j++) {
-    //         printf("%lf ", A[i][j]);
-    //     }
-    //     printf("%lf\n", B[i]);
-    // }
-
     double* x = (double*) malloc(n * sizeof(double));
 
-    gaussElimination(A, b, n);
-    backSubstitution(A, b, x, n);
+    // gaussElimination(A, b, n);
+    // backSubstitution(A, b, x, n);
+
+    gaussSeidel(A, b, x, n);
 
     printSolution(x, n);
 

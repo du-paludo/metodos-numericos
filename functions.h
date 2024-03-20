@@ -13,4 +13,6 @@ void gaussElimination(double** A, double* b, int n);
 
 void backSubstitution(double** A, double* b, double* x, int n);
 
+void gaussSeidel(double** A, double* b, double* x, int n);
+
 #endif
