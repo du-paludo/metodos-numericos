@@ -1,4 +1,5 @@
-#include "functions.h"
+#include "helpers.h"
+#include "methods.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,11 +21,10 @@ int main() {
 
     double* x = (double*) malloc(n * sizeof(double));
 
-    // gaussElimination(A, b, n);
-    // backSubstitution(A, b, x, n);
-
+    // gaussElimination(A, b, x, n);
     // gaussSeidel(A, b, x, n);
-    gaussTridiagonal(A, b, x, n);
+    // gaussTridiagonal(A, b, x, n);
+    gaussSeidelTridiagonal(A, b, x, n);
 
     printSolution(x, n);
 
