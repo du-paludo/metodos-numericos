@@ -23,7 +23,8 @@ int main() {
     // gaussElimination(A, b, n);
     // backSubstitution(A, b, x, n);
 
-    gaussSeidel(A, b, x, n);
+    // gaussSeidel(A, b, x, n);
+    gaussTridiagonal(A, b, x, n);
 
     printSolution(x, n);
 

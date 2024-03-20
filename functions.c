@@ -96,3 +96,20 @@ void gaussSeidel(double** A, double* b, double* x, int n) {
         }
     }
 }
+
+void gaussTridiagonal(double** A, double* b, double* x, int n) {
+    for (int i = 0; i < n-1; i++) {
+        double m = A[i+1][i] / A[i][i];
+        A[i+1][i] = 0;
+        A[i+1][i+1] -= A[i][i+1] * m;
+        b[i+1] -= b[i] * m;
+    }
+
+    x[n-1] = b[n-1] / A[n-1][n-1];
+    for (int i = n-2; i >= 0; i--) {
+        x[i] = (b[i] - A[i][i+1] * x[i+1]) / A[i][i];
+    }
+}
+
+void gaussSeidelTridiagonal(double** A, double* b, double* x, int n) {
+}
