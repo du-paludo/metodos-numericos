@@ -20,6 +20,22 @@ void printSolution(double* x, int n) {
     printf("%lf\n", x[n-1]);
 }
 
+void printResidue(double** A, double* b, double* x, int n) {
+    double residue;
+    for (int i = 0; i < n; i++) {
+        residue = 0;
+        for (int j = 0; j < n; j++) {
+            residue += A[i][j] * x[j];
+        }
+        residue -= b[i];
+        if (i == n - 1) {
+            printf("%lf\n", residue);
+        } else {
+            printf("%lf ", residue);
+        }
+    }
+}
+
 int findMax(double** A, int i, int n) {
     int pivotIndex = i;
     int pivotValue = A[pivotIndex][i];
@@ -38,4 +54,12 @@ void swapRow(double** A, int i, int pivotIndex) {
     double* temp = A[i];
     A[i] = A[pivotIndex];
     A[pivotIndex] = temp;
+}
+
+void copyArray(double** A, double** B, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            B[i][j] = A[i][j];
+        }
+    }
 }

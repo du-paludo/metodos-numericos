@@ -1,7 +1,7 @@
 PROG = perfSL
 CC = gcc
 CFLAGS = -Wall
-OBJS = main.o helpers.o methods.o
+OBJS = main.o helpers.o methods.o utils.o
 
 .PHONY: all debug clean purge
 
@@ -12,6 +12,9 @@ helpers.o: helpers.c helpers.h
 
 methods.o: methods.c methods.h
 	$(CC)  $(CFLAGS) -c methods.c -o methods.o
+
+utils.o: utils.c utils.h
+	$(CC)  $(CFLAGS) -c utils.c -o utils.o
 
 main.o: main.c
 	$(CC)  $(CFLAGS) -c main.c -o main.o

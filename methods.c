@@ -6,7 +6,7 @@
 #define MAXIT 50
 #define MAXERROR 0.0001
 
-void gauss(double** A, double* b, double* x, int n) {
+void gaussElimination(double** A, double* b, double* x, int n) {
     for (int i = 0; i < n; i++) {
         int pivotIndex = findMax(A, i, n);
 
@@ -33,11 +33,12 @@ void gauss(double** A, double* b, double* x, int n) {
     }
 }
 
-void gaussSeidel(double** A, double* b, double* x, int n) {
+int gaussSeidel(double** A, double* b, double* x, int n) {
+    int k;
     for (int i = 0; i < n; i++) {
         x[i] = 0;
     }
-    for (int k = 0; k < MAXIT; k++) {
+    for (k = 0; k < MAXIT; k++) {
         double maxNorm = 0;
         for (int i = 0; i < n; i++) {
             double oldX = x[i];
@@ -57,9 +58,10 @@ void gaussSeidel(double** A, double* b, double* x, int n) {
             break;
         }
     }
+    return k;
 }
 
-void gaussTridiagonal(double** A, double* b, double* x, int n) {
+void gaussEliminationTridiagonal(double** A, double* b, double* x, int n) {
     for (int i = 0; i < n-1; i++) {
         double m = A[i+1][i] / A[i][i];
         A[i+1][i] = 0;
@@ -73,12 +75,13 @@ void gaussTridiagonal(double** A, double* b, double* x, int n) {
     }
 }
 
-void gaussSeidelTridiagonal(double** A, double* b, double* x, int n) {
+int gaussSeidelTridiagonal(double** A, double* b, double* x, int n) {
+    int k;
     double* oldX = (double*) malloc(sizeof(double) * n);
     for (int i = 0; i < n; i++) {
         x[i] = 0;
     }
-    for (int k = 0; k < MAXIT; k++) {
+    for (k = 0; k < MAXIT; k++) {
         oldX[0] = x[0];
         x[0] = (b[0] - A[0][1] * x[1]) / A[0][0];
         double maxNorm = x[0] - oldX[0];
@@ -99,4 +102,5 @@ void gaussSeidelTridiagonal(double** A, double* b, double* x, int n) {
         }
     }
     free(oldX);
+    return k;
 }
