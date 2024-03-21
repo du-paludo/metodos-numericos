@@ -6,20 +6,17 @@ def executePrgrm(executable_path):
 
     try:
         # Executa o programa
+        process = subprocess.Popen(command)
         
-        # Cria um novo processo, redireciona a saída para o processo python
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
-        stdout, stderr = process.communicate()
+        # Aguarda o término do processo
+        process.wait()
 
         # Arpresentação de erro
         if process.returncode != 0:
             print('Erro ao executar o programa')
         else:
             print('Programa executado com sucesso')
-        
-        # Retorna a saída do programa
-        return stdout.decode(), stderr.decode()
-    
+       
     except Exception as e:
         # Apresenta o erro
         print(f"Erro:{e}")
@@ -52,7 +49,7 @@ if __name__ == "__main__":
     executable_path = "./perfSL"
 
     # Executa o programa
-    stdout, stderr = executePrgrm(executable_path)
+    executePrgrm(executable_path)
 
     # Faz a análise de FLOP
-    stdout, stderr = analyzeFlop()
+    #stdout, stderr = analyzeFlop()
