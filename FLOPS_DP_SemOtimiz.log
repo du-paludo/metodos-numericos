@@ -4,55 +4,55 @@ CPU type:	Intel Xeon SandyBridge EN/EP processor
 CPU clock:	2.59 GHz
 --------------------------------------------------------------------------------
 EG clássico:
-0.003868 ms
-1.311005 2.244019 1.665072 3.416268
-0.000000 -0.750000 -1.800000 -0.750000
+0.00316700 ms
+1.311004784689 2.244019138756 1.665071770335 3.416267942584
+0.000000000000 -0.000000000000 0.000000000000 0.000000000000
 
 GS clássico [ 7 iterações ]:
-0.001902 ms
-1.402860 2.611476 2.293059 3.760765
--0.000036 -0.000014 -0.000004 0.000000
+0.00192600 ms
+1.310995521955 2.244013076182 1.665069317969 3.416267329492
+-0.000030988362 -0.000012535194 -0.000003133799 0.000000000000
 
 EG 3-diagonal:
-0.000382 ms
-1.402871 2.611483 2.293062 3.760766
-0.000000 -0.750000 -2.000000 -1.285714
+0.00029500 ms
+1.311004784689 2.244019138756 1.665071770335 3.416267942584
+0.000000000000 -0.750000000000 -1.800000000000 -0.750000000000
 
 GS 3-diagonal [ 7 iterações ]:
-0.001590 ms
-1.501115 3.004503 3.016914 4.263157
--0.000042 -0.000017 -0.000004 0.000000
+0.00160300 ms
+1.402860186622 2.611476298235 2.293059387454 3.760764846863
+-0.000035551749 -0.000014381134 -0.000003595283 0.000000000000
 --------------------------------------------------------------------------------
 Region EG_Clássico, Group 1: FLOPS_DP
 +-------------------+----------+
 |    Region Info    |  Core 8  |
 +-------------------+----------+
-| RDTSC Runtime [s] | 0.000006 |
+| RDTSC Runtime [s] | 0.000005 |
 |     call count    |        1 |
 +-------------------+----------+
 
 +--------------------------------------+---------+--------+
 |                 Event                | Counter | Core 8 |
 +--------------------------------------+---------+--------+
-|           INSTR_RETIRED_ANY          |  FIXC0  |   7304 |
-|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  24977 |
-|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  24960 |
+|           INSTR_RETIRED_ANY          |  FIXC0  |   7432 |
+|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  25346 |
+|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  20020 |
 | FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |      0 |
-| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    110 |
+| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    104 |
 |       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |      0 |
 +--------------------------------------+---------+--------+
 
 +----------------------+--------------+
 |        Metric        |    Core 8    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 5.939541e-06 |
-| Runtime unhalted [s] | 9.629927e-06 |
-|      Clock [MHz]     |    2595.4518 |
-|          CPI         |       3.4196 |
-|      DP MFLOP/s      |      18.5199 |
+|  Runtime (RDTSC) [s] | 4.722212e-06 |
+| Runtime unhalted [s] | 9.771970e-06 |
+|      Clock [MHz]     |    3283.7694 |
+|          CPI         |       3.4104 |
+|      DP MFLOP/s      |      22.0236 |
 |    AVX DP MFLOP/s    |            0 |
 |    Packed MUOPS/s    |            0 |
-|    Scalar MUOPS/s    |      18.5199 |
+|    Scalar MUOPS/s    |      22.0236 |
 |  Vectorization ratio |            0 |
 +----------------------+--------------+
 
@@ -67,25 +67,25 @@ Region GS_Clássico, Group 1: FLOPS_DP
 +--------------------------------------+---------+--------+
 |                 Event                | Counter | Core 8 |
 +--------------------------------------+---------+--------+
-|           INSTR_RETIRED_ANY          |  FIXC0  |  10261 |
-|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  16268 |
-|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  16328 |
+|           INSTR_RETIRED_ANY          |  FIXC0  |  10279 |
+|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  17633 |
+|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  13884 |
 | FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |      0 |
-| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    369 |
+| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    363 |
 |       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |      0 |
 +--------------------------------------+---------+--------+
 
 +----------------------+--------------+
 |        Metric        |    Core 8    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 2.225834e-06 |
-| Runtime unhalted [s] | 6.272157e-06 |
-|      Clock [MHz]     |    2584.1543 |
-|          CPI         |       1.5854 |
-|      DP MFLOP/s      |     165.7806 |
+|  Runtime (RDTSC) [s] | 2.185681e-06 |
+| Runtime unhalted [s] | 6.798278e-06 |
+|      Clock [MHz]     |    3294.1161 |
+|          CPI         |       1.7154 |
+|      DP MFLOP/s      |     166.0810 |
 |    AVX DP MFLOP/s    |            0 |
 |    Packed MUOPS/s    |            0 |
-|    Scalar MUOPS/s    |     165.7806 |
+|    Scalar MUOPS/s    |     166.0810 |
 |  Vectorization ratio |            0 |
 +----------------------+--------------+
 
@@ -100,25 +100,25 @@ Region EG_3-Diagonal, Group 1: FLOPS_DP
 +--------------------------------------+---------+--------+
 |                 Event                | Counter | Core 8 |
 +--------------------------------------+---------+--------+
-|           INSTR_RETIRED_ANY          |  FIXC0  |   4641 |
-|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  12454 |
-|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  12506 |
+|           INSTR_RETIRED_ANY          |  FIXC0  |   4513 |
+|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  11149 |
+|         CPU_CLK_UNHALTED_REF         |  FIXC2  |   8736 |
 | FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |      0 |
-| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |     48 |
+| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |     50 |
 |       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |      0 |
 +--------------------------------------+---------+--------+
 
 +----------------------+--------------+
 |        Metric        |    Core 8    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 6.897656e-07 |
-| Runtime unhalted [s] | 4.801662e-06 |
-|      Clock [MHz]     |    2582.9007 |
-|          CPI         |       2.6835 |
-|      DP MFLOP/s      |      69.5889 |
+|  Runtime (RDTSC) [s] | 5.166365e-07 |
+| Runtime unhalted [s] | 4.298418e-06 |
+|      Clock [MHz]     |    3310.1722 |
+|          CPI         |       2.4704 |
+|      DP MFLOP/s      |      96.7798 |
 |    AVX DP MFLOP/s    |            0 |
 |    Packed MUOPS/s    |            0 |
-|    Scalar MUOPS/s    |      69.5889 |
+|    Scalar MUOPS/s    |      96.7798 |
 |  Vectorization ratio |            0 |
 +----------------------+--------------+
 
@@ -133,25 +133,25 @@ Region GS_3-Diagonal, Group 1: FLOPS_DP
 +--------------------------------------+---------+--------+
 |                 Event                | Counter | Core 8 |
 +--------------------------------------+---------+--------+
-|           INSTR_RETIRED_ANY          |  FIXC0  |   7628 |
-|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  15191 |
-|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  15236 |
+|           INSTR_RETIRED_ANY          |  FIXC0  |   7483 |
+|         CPU_CLK_UNHALTED_CORE        |  FIXC1  |  15517 |
+|         CPU_CLK_UNHALTED_REF         |  FIXC2  |  12298 |
 | FP_COMP_OPS_EXE_SSE_FP_PACKED_DOUBLE |   PMC0  |      0 |
-| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    229 |
+| FP_COMP_OPS_EXE_SSE_FP_SCALAR_DOUBLE |   PMC1  |    211 |
 |       SIMD_FP_256_PACKED_DOUBLE      |   PMC2  |      0 |
 +--------------------------------------+---------+--------+
 
 +----------------------+--------------+
 |        Metric        |    Core 8    |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 1.914302e-06 |
-| Runtime unhalted [s] | 5.856917e-06 |
-|      Clock [MHz]     |    2586.0247 |
-|          CPI         |       1.9915 |
-|      DP MFLOP/s      |     119.6258 |
+|  Runtime (RDTSC) [s] | 1.829433e-06 |
+| Runtime unhalted [s] | 5.982469e-06 |
+|      Clock [MHz]     |    3272.6576 |
+|          CPI         |       2.0736 |
+|      DP MFLOP/s      |     115.3363 |
 |    AVX DP MFLOP/s    |            0 |
 |    Packed MUOPS/s    |            0 |
-|    Scalar MUOPS/s    |     119.6258 |
+|    Scalar MUOPS/s    |     115.3363 |
 |  Vectorization ratio |            0 |
 +----------------------+--------------+
 

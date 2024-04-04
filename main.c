@@ -28,6 +28,11 @@ int main() {
     for (int i = 0; i < n; i++) {
         Acopy[i] = (double*) malloc(n * sizeof(double));
     }
+
+    double* bCopy = (double*) malloc(n * sizeof(double));
+   
+    // Criando cópias do vetor B e matriz A    
+    memcpy(bCopy, b, n * sizeof(double));
     copyArray(A, Acopy, n);
 
     double time;
@@ -38,12 +43,12 @@ int main() {
     // Gauss Elimination
     LIKWID_MARKER_START ("EG_Clássico");
     time = timestamp();
-    gaussElimination(Acopy, b, x, n);
+    gaussElimination(Acopy, bCopy, x, n);
     time = timestamp() - time;
     LIKWID_MARKER_STOP ("EG_Clássico");
     
     printf("EG clássico:\n");
-    printf("%lf ms\n", time);
+    printf("%.8lf ms\n", time);
     printSolution(x, n);
     printResidue(A, b, x, n);
     printf("\n");
@@ -56,7 +61,7 @@ int main() {
     LIKWID_MARKER_STOP ("GS_Clássico");
 
     printf("GS clássico [ %d iterações ]:\n", it);
-    printf("%lf ms\n", time);
+    printf("%.8lf ms\n", time);
     printSolution(x, n);
     printResidue(A, b, x, n);
     printf("\n");
@@ -71,7 +76,7 @@ int main() {
     LIKWID_MARKER_STOP ("EG_3-Diagonal");
 
     printf("EG 3-diagonal:\n");
-    printf("%lf ms\n", time);
+    printf("%.8lf ms\n", time);
     printSolution(x, n);
     printResidue(A, b, x, n);
     printf("\n");
@@ -84,7 +89,7 @@ int main() {
     LIKWID_MARKER_STOP ("GS_3-Diagonal");
 
     printf("GS 3-diagonal [ %d iterações ]:\n", it);
-    printf("%lf ms\n", time);
+    printf("%.8lf ms\n", time);
     printSolution(x, n);
     printResidue(A, b, x, n);
     

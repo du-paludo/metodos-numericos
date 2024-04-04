@@ -9,7 +9,7 @@ void printResidue(double** A, double* b, double* x, int n);
 
 int findMax(double** A, int i, int n);
 
-void swapRow(double** A, int i, int pivotIndex);
+void swapRow(double** A, double *b, int row1, int row2, int n); 
 
 void copyArray(double** A, double** B, int n);
 

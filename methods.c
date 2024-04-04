@@ -11,7 +11,7 @@ void gaussElimination(double** A, double* b, double* x, int n) {
         int pivotIndex = findMax(A, i, n);
 
         if (pivotIndex != i) {
-            swapRow(A, i, pivotIndex);
+            swapRow(A, b, i, pivotIndex, n);
         }
 
         for (int k = i+1; k < n; k++) {
