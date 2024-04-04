@@ -52,4 +52,4 @@ if __name__ == "__main__":
     executePrgrm(executable_path)
 
     # Faz a análise de FLOP
-    #stdout, stderr = analyzeFlop()
+    stdout, stderr = analyzeFlop()
