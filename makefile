@@ -8,19 +8,19 @@ OBJS = main.o helpers.o methods.o utils.o
 all: $(PROG)
 
 helpers.o: helpers.c helpers.h
-	$(CC)  $(CFLAGS) -c helpers.c -o helpers.o
+	$(CC) $(CFLAGS) -c helpers.c -o helpers.o
 
 methods.o: methods.c methods.h
-	$(CC)  $(CFLAGS) -c methods.c -o methods.o
+	$(CC) $(CFLAGS) -c methods.c -o methods.o
 
 utils.o: utils.c utils.h
-	$(CC)  $(CFLAGS) -c utils.c -o utils.o
+	$(CC) $(CFLAGS) -c utils.c -o utils.o
 
 main.o: main.c
-	$(CC)  $(CFLAGS) -c main.c -o main.o
+	$(CC) $(CFLAGS) -DLIKWID_PERFMON -I${LIKWID_INCLUDE} -c main.c -o main.o
 
 $(PROG): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) -L${LIKWID_LIB} -llikwid
 
 clean:
 	@rm -f *~ *.bak *.tmp
