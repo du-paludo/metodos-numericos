@@ -20,18 +20,18 @@ void printSolution(double* x, int n) {
     printf("%.12lf\n", x[n-1]);
 }
 
-void printResidue(double** A, double* b, double* x, int n) {
-    double residue;
+void printResidual(double** A, double* b, double* x, int n) {
+    double residual;
     for (int i = 0; i < n; i++) {
-        residue = 0;
+        residual = 0.0;
         for (int j = 0; j < n; j++) {
-            residue += A[i][j] * x[j];
+            residual += A[i][j] * x[j];
         }
-        residue -= b[i];
+        residual -= b[i];
         if (i == n - 1) {
-            printf("%.12lf\n", residue);
+            printf("%.12lf\n", residual);
         } else {
-            printf("%.12lf ", residue);
+            printf("%.12lf ", residual);
         }
     }
 }
