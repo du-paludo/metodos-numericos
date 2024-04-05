@@ -1,3 +1,6 @@
+# Eduardo Stefanel Paludo - GRR20210581
+# Fábio Naconeczny da Silva - GRR20211782
+
 PROG = perfSL
 CC = gcc
 CFLAGS = -Wall
@@ -16,14 +19,14 @@ methods.o: methods.c methods.h
 utils.o: utils.c utils.h
 	$(CC) $(CFLAGS) -c utils.c -o utils.o
 
-# main.o: main.c
-# 	$(CC) $(CFLAGS) -DLIKWID_PERFMON -I${LIKWID_INCLUDE} -c main.c -o main.o
+main.o: main.c
+	$(CC) $(CFLAGS) -DLIKWID_PERFMON -I${LIKWID_INCLUDE} -c main.c -o main.o
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c -o main.o
 
-# $(PROG): $(OBJS)
-# 	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) -L${LIKWID_LIB} -llikwid
+$(PROG): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) -L${LIKWID_LIB} -llikwid
 
 $(PROG): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^

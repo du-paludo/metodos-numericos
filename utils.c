@@ -1,3 +1,6 @@
+// Eduardo Stefanel Paludo - GRR20210581
+// Fábio Naconeczny da Silva - GRR20211782
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>

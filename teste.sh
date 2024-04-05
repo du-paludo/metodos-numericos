@@ -1,3 +1,5 @@
+# Eduardo Stefanel Paludo - GRR20210581
+# Fábio Naconeczny da Silva - GRR20211782
 #!/bin/bash
 
 METRICA="FLOPS_DP"

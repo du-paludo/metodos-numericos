@@ -1,3 +1,6 @@
+// Eduardo Stefanel Paludo - GRR20210581
+// Fábio Naconeczny da Silva - GRR20211782
+
 #include "helpers.h"
 #include "methods.h"
 #include "utils.h"
@@ -5,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #include <likwid.h>
+#include <likwid.h>
 
 int main() {
     int n;
@@ -15,6 +18,7 @@ int main() {
     double** A = (double**) malloc(n * sizeof(double*));
     double* b = (double*) malloc(n * sizeof(double));
 
+    // Lê a matriz A e o vetor b de entrada
     for (int i = 0; i < n; i++) {
         A[i] = (double*) malloc(n * sizeof(double));
         for (int j = 0; j < n; j++) {
@@ -23,30 +27,30 @@ int main() {
         scanf("%lf", &b[i]);
     }
 
+    // Aloca memória para o vetor solução
     double* x = (double*) malloc(n * sizeof(double));
 
+    // Faz as cópias necessárias para a Eliminação de Gauss
     double** Acopy = (double**) malloc(n * sizeof(double*));
     for (int i = 0; i < n; i++) {
         Acopy[i] = (double*) malloc(n * sizeof(double));
     }
-
     double* bCopy = (double*) malloc(n * sizeof(double));
-   
-    // Criando cópias do vetor B e matriz A    
     memcpy(bCopy, b, n * sizeof(double));
     copyArray(A, Acopy, n);
 
+    // Tempo de execução e número de iterações
     double time;
     int it;
 
-    // LIKWID_MARKER_INIT;
+    LIKWID_MARKER_INIT;
 
-    // Gauss Elimination
-    // LIKWID_MARKER_START ("EG_Clássico");
+    // Eliminação de Gauss
+    LIKWID_MARKER_START ("EG_Clássico");
     time = timestamp();
     gaussElimination(Acopy, bCopy, x, n);
     time = timestamp() - time;
-    // LIKWID_MARKER_STOP ("EG_Clássico");
+    LIKWID_MARKER_STOP ("EG_Clássico");
     
     printf("EG clássico:\n");
     printf("%.8lf ms\n", time);
@@ -55,11 +59,11 @@ int main() {
     printf("\n");
 
     // Gauss-Seidel
-    // LIKWID_MARKER_START ("GS_Clássico");
+    LIKWID_MARKER_START ("GS_Clássico");
     time = timestamp();
     it = gaussSeidel(A, b, x, n);
     time = timestamp() - time;
-    // LIKWID_MARKER_STOP ("GS_Clássico");
+    LIKWID_MARKER_STOP ("GS_Clássico");
 
     printf("GS clássico [ %d iterações ]:\n", it);
     printf("%.8lf ms\n", time);
@@ -68,13 +72,14 @@ int main() {
     printf("\n");
 
     copyArray(A, Acopy, n);
+    memcpy(bCopy, b, n * sizeof(double));
 
-    // 3-diagonal Gauss Elimination
-    // LIKWID_MARKER_START ("EG_3-Diagonal");
+    // Eliminação de Gauss tri-diagonal
+    LIKWID_MARKER_START ("EG_3-Diagonal");
     time = timestamp();
-    gaussEliminationTridiagonal(Acopy, b, x, n);
+    gaussEliminationTridiagonal(Acopy, bcopy, x, n);
     time = timestamp() - time;
-    // LIKWID_MARKER_STOP ("EG_3-Diagonal");
+    LIKWID_MARKER_STOP ("EG_3-Diagonal");
 
     printf("EG 3-diagonal:\n");
     printf("%.8lf ms\n", time);
@@ -82,19 +87,19 @@ int main() {
     printResidual(A, b, x, n);
     printf("\n");
 
-    // 3-diagonal Gauss-Seidel
-    // LIKWID_MARKER_START ("GS_3-Diagonal");
+    // Gauss-Seidel tri-diagonal
+    LIKWID_MARKER_START ("GS_3-Diagonal");
     time = timestamp();
     it = gaussSeidelTridiagonal(A, b, x, n);
     time = timestamp() - time;
-    // LIKWID_MARKER_STOP ("GS_3-Diagonal");
+    LIKWID_MARKER_STOP ("GS_3-Diagonal");
 
     printf("GS 3-diagonal [ %d iterações ]:\n", it);
     printf("%.8lf ms\n", time);
     printSolution(x, n);
     printResidual(A, b, x, n);
     
-    // LIKWID_MARKER_CLOSE;
+    LIKWID_MARKER_CLOSE;
 
     // Libera a memória alocada
     for (int i = 0; i < n; i++) {

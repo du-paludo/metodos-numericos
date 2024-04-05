@@ -1,3 +1,6 @@
+// Eduardo Stefanel Paludo - GRR20210581
+// Fábio Naconeczny da Silva - GRR20211782
+
 #ifndef __UTILS_H__
 #define __UTILS_H__
 

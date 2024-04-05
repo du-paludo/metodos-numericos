@@ -1,8 +1,13 @@
+// Eduardo Stefanel Paludo - GRR20210581
+// Fábio Naconeczny da Silva - GRR20211782
+
 #include "helpers.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
+
+// Imprime o sistema A|B
 void printSystem(double** A, double* b, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -13,6 +18,7 @@ void printSystem(double** A, double* b, int n) {
     printf("\n");
 }
 
+// Imprime o vetor solução com 12 casas decimais
 void printSolution(double* x, int n) {
     for (int i = 0; i < n-1; i++) {
         printf("%.12lf ", x[i]);
@@ -20,6 +26,7 @@ void printSolution(double* x, int n) {
     printf("%.12lf\n", x[n-1]);
 }
 
+// Imprime o resíduo b - Ax
 void printResidual(double** A, double* b, double* x, int n) {
     double residual;
     for (int i = 0; i < n; i++) {
@@ -36,6 +43,7 @@ void printResidual(double** A, double* b, double* x, int n) {
     }
 }
 
+// Encontra o pivô utilizado na Eliminação de Gauss
 int findMax(double** A, int i, int n) {
     int pivotIndex = i;
     int pivotValue = A[pivotIndex][i];
@@ -50,6 +58,7 @@ int findMax(double** A, int i, int n) {
     return pivotIndex;
 }
 
+// Troca duas linhas de lugar
 void swapRow(double **A, double *B, int row1, int row2, int n) {
     // Troca os elementos da linha row1 com a linha row2 na matriz A
     double temp;
@@ -64,6 +73,7 @@ void swapRow(double **A, double *B, int row1, int row2, int n) {
     B[row2] = temp;
 }
 
+// Copia a matriz A para B
 void copyArray(double** A, double** B, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
