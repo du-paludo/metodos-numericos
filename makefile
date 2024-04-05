@@ -3,7 +3,7 @@
 
 PROG = perfSL
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -O0 -Wall
 OBJS = main.o helpers.o methods.o utils.o
 
 .PHONY: all debug clean purge
