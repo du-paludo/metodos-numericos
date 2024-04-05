@@ -6,8 +6,6 @@ METRICA="FLOPS_DP"
 
 CPU=15
 
-CPU=8
-
 LIKWID_HOME=/home/soft/likwid
 
 make -B
