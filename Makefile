@@ -23,7 +23,7 @@ main.o: main.c
 	$(CC) $(CFLAGS) -DLIKWID_PERFMON -I${LIKWID_INCLUDE} -c main.c -o main.o
 
 $(PROG): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) -L${LIKWID_LIB} -llikwid
+	$(CC) $(CFLAGS) -o $@ $^ -L${LIKWID_LIB} -llikwid
 
 clean:
 	@rm -f *~ *.bak *.tmp
