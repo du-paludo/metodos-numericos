@@ -63,7 +63,7 @@ int gaussSeidel(double** A, double* b, double* x, int n) {
                 maxNorm = fabs(x[i] - oldX);
             }
         }
-        if (maxNorm < MAXERROR) {
+        if (maxNorm < MAXERROR || k == MAXIT) {
             break;
         }
     }
@@ -111,7 +111,7 @@ int gaussSeidelTridiagonal(double** A, double* b, double* x, int n) {
         if (fabs(x[n-1] - oldX[n-1]) > maxNorm) {
             maxNorm = fabs(x[n-1] - oldX[n-1]);
         }
-        if (maxNorm < MAXERROR) {
+        if (maxNorm < MAXERROR || k == MAXIT) {
             break;
         }
     }

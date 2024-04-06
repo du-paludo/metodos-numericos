@@ -77,7 +77,7 @@ int main() {
     // Eliminação de Gauss tri-diagonal
     LIKWID_MARKER_START ("EG_3-Diagonal");
     time = timestamp();
-    gaussEliminationTridiagonal(Acopy, bcopy, x, n);
+    gaussEliminationTridiagonal(Acopy, bCopy, x, n);
     time = timestamp() - time;
     LIKWID_MARKER_STOP ("EG_3-Diagonal");
 
@@ -108,6 +108,7 @@ int main() {
     }
     free(A);
     free(Acopy);
+    free(bCopy);
     free(b);
     free(x);
 

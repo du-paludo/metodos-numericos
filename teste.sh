@@ -17,5 +17,5 @@ done
 
 cat FLOPS_DP_SemOtimiz.log | head -n 25 | tail -n 21
 
-cat ${k}_SemOtimiz.log | grep "DP" | awk '!/AVX/ {print $N, "\n+----------------------+--------------+"}' | sed '/^Region/ s/^/\n/'
+cat FLOPS_DP_SemOtimiz.log | grep "DP" | awk '!/AVX/ {print $N, "\n+----------------------+--------------+"}' | sed '/^Region/ s/^/\n/'
 
