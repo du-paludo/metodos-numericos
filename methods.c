@@ -1,12 +1,18 @@
+// Eduardo Stefanel Paludo - GRR20210581
+// Fábio Naconeczny da Silva - GRR20211782
+
 #include "methods.h"
 #include "helpers.h"
 #include <math.h>
 #include <stdlib.h>
 
+// Parâmetros para o método de Gauss-Seidel
 #define MAXIT 50
 #define MAXERROR 0.0001
 
+// Executa o método da eliminação de Gauss, utilizando pivoteamento parcial
 void gaussElimination(double** A, double* b, double* x, int n) {
+    // Triangularização
     for (int i = 0; i < n; i++) {
         int pivotIndex = findMax(A, i, n);
 
@@ -24,6 +30,7 @@ void gaussElimination(double** A, double* b, double* x, int n) {
         }
     }
 
+    // Retrossubstituição
     for (int i = n-1; i >= 0; i--) {
         x[i] = b[i];
         for (int j = i+1; j < n; j++) {
@@ -33,8 +40,10 @@ void gaussElimination(double** A, double* b, double* x, int n) {
     }
 }
 
+// Retorna o número de iterações realizadas
 int gaussSeidel(double** A, double* b, double* x, int n) {
     int k;
+    // Vetor solução inicializado com 0 na iteração 0
     for (int i = 0; i < n; i++) {
         x[i] = 0;
     }
@@ -62,6 +71,7 @@ int gaussSeidel(double** A, double* b, double* x, int n) {
 }
 
 void gaussEliminationTridiagonal(double** A, double* b, double* x, int n) {
+    // Triangularização
     for (int i = 0; i < n-1; i++) {
         double m = A[i+1][i] / A[i][i];
         A[i+1][i] = 0.0;
@@ -69,15 +79,19 @@ void gaussEliminationTridiagonal(double** A, double* b, double* x, int n) {
         b[i+1] -= b[i] * m;
     }
 
+    // Retrossubstituição
     x[n-1] = b[n-1] / A[n-1][n-1];
     for (int i = n-2; i >= 0; i--) {
         x[i] = (b[i] - A[i][i+1] * x[i+1]) / A[i][i];
     }
 }
 
+// Retorna o número de iterações realizadas
 int gaussSeidelTridiagonal(double** A, double* b, double* x, int n) {
     int k;
+    // Aloca memória para armazenar a solução antiga
     double* oldX = (double*) malloc(sizeof(double) * n);
+    // Vetor solução inicializado com 0 na iteração 0
     for (int i = 0; i < n; i++) {
         x[i] = 0;
     }

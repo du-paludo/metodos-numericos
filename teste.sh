@@ -1,10 +1,10 @@
+# Eduardo Stefanel Paludo - GRR20210581
+# Fábio Naconeczny da Silva - GRR20211782
 #!/bin/bash
 
 METRICA="FLOPS_DP"
 
 CPU=15
-
-CPU=8
 
 LIKWID_HOME=/home/soft/likwid
 

@@ -1,3 +1,6 @@
+// Eduardo Stefanel Paludo - GRR20210581
+// Fábio Naconeczny da Silva - GRR20211782
+
 #ifndef METHODS_H
 #define METHODS_H
 

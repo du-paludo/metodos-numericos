@@ -1,5 +1,8 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+// Eduardo Stefanel Paludo - GRR20210581
+// Fábio Naconeczny da Silva - GRR20211782
+
+#ifndef HELPERS_H
+#define HELPERS_H
 
 void printSystem(double** A, double* b, int n);
 
